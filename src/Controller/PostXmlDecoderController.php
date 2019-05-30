@@ -29,10 +29,13 @@ class PostXmlDecoderController extends AbstractController
             //dump($json_array);
 
         //Создает XML-строку и XML-документ при помощи DOM
-        $dom = new \DOMDocument('1.0');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
 
         //добавление корня - <books>
-        $books = $dom->appendChild($dom->createElement('z:root'));
+        $root = $dom->appendChild($dom->createElement('z:root'));
+
+        $dtstitul_o = $root->appendChild($dom->createElement('z:DTSTITUL_O'));
+        $row_dtstitul_o = $dtstitul_o->appendChild($dom->createElement('z:row'));
 
 
 
@@ -43,11 +46,19 @@ class PostXmlDecoderController extends AbstractController
 
                         foreach($item as $key => $item_1)
                         {
+
                             if(is_array($item))
                             {
-                                foreach($item_1 as $item_2)
+                                $dtsperson_o = $root->appendChild($dom->createElement('z:'.$name));
+                                $row_dtsperson_o = $dtsperson_o->appendChild($dom->createElement('z:row'));
+                                foreach($item_1 as $key_2 => $item_2)
                                 {
-                                    echo $name . '--------------------------' . $item_2 ."</br>";
+                                    echo $name . '---'.$key_2."=".$item_2."</br>";
+
+
+                                    $row_dtsperson_o->setAttribute($key_2,$item_2);
+
+
                                 }
                             }
                             else
@@ -94,43 +105,5 @@ class PostXmlDecoderController extends AbstractController
         }
         return $result;
     }
-
-
-    protected function makeXml($form_xml_array)
-    {
-
-        $json_array = json_decode($form_xml_array['name']);
-
-
-
-
-        //Создает XML-строку и XML-документ при помощи DOM
-        $dom = new DomDocument('1.0');
-
-        //добавление корня - <books>
-        $books = $dom->appendChild($dom->createElement('books'));
-
-        //добавление элемента <book> в <books>
-        $book = $books->appendChild($dom->createElement('book'));
-
-        // добавление элемента <title> в <book>
-        $title = $book->appendChild($dom->createElement('title'));
-
-        // добавление элемента текстового узла <title> в <title>
-        $title->appendChild(
-        $dom->createTextNode('Great American Novel'));
-
-        //генерация xml
-        $dom->formatOutput = true; // установка атрибута formatOutput
-                // domDocument в значение true
-        // save XML as string or file
-        $test1 = $dom->saveXML(); // передача строки в test1
-        $dom->save('test1.xml'); // сохранение файла
-
-
-
-    }
-
-
 
 }

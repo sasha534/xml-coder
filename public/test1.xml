@@ -1,2 +1,10 @@
-<?xml version="1.0"?>
-<z:root/>
+<?xml version="1.0" encoding="UTF-8"?>
+<z:root>
+  <z:DTSTITUL_O>
+    <z:row/>
+  </z:DTSTITUL_O>
+  <z:DTSVIKUP_O>
+    <z:row NZP="1" VYD_CP="Акція проста" KILK_CP="10" SUM_CP="2" CH_STKAP="10.33" ZMIST="MANY MANY MANY MANY BIIIIIIG BIIIIIIG OLOLO TEXT"/>
+    <z:row NZP="2" VYD_CP="Акція проста" KILK_CP="10" SUM_CP="2" CH_STKAP="10.33" ZMIST="MANY MANY MANY MANY BIIIIIIG BIIIIIIG OLOLO TEXT"/>
+  </z:DTSVIKUP_O>
+</z:root>
