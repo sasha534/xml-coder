@@ -22,33 +22,49 @@ class PostXmlDecoderController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
+        if($form->isSubmitted())
+        {
             $form_xml_array = $request->request->get('form');
             $json_array = json_decode($form_xml_array['name']);
-            dump($json_array);
-        foreach($json_array as $name => $item)
-        {
-            echo $name ."</br>";
-            //die(dump($item));
-            //dump($item['DTSTITUL_O']);
-            //print_r($item['DTSVIKUP_O']);
-            foreach($item as $key => $item_1)
-            {
-                if(is_array($item))
-                {
-                    foreach($item_1 as $item_2)
-                    {
-                        echo $name . '--------------------------' . $item_2 ."</br>";
-                    }
-                }
-                else
-                {
-                     echo $name . '-------------' . $key . '-----------' . $item_1 ."</br>";
-                }
+            //dump($json_array);
+
+        //Создает XML-строку и XML-документ при помощи DOM
+        $dom = new \DOMDocument('1.0');
+
+        //добавление корня - <books>
+        $books = $dom->appendChild($dom->createElement('z:root'));
 
 
-            }
-        }
+
+            foreach($json_array as $name => $item)
+                {
+                    echo $name ."</br>";
+
+
+                        foreach($item as $key => $item_1)
+                        {
+                            if(is_array($item))
+                            {
+                                foreach($item_1 as $item_2)
+                                {
+                                    echo $name . '--------------------------' . $item_2 ."</br>";
+                                }
+                            }
+                            else
+                            {
+                                 echo $name . '-------------' . $key . '-----------' . $item_1 ."</br>";
+                            }
+
+
+                        }
+                }
+
+            //генерация xml
+            $dom->formatOutput = true; // установка атрибута formatOutput
+            // domDocument в значение true
+            // save XML as string or file
+            $test1 = $dom->saveXML(); // передача строки в test1
+            $dom->save('test1.xml'); // сохранение файла
 
 
 //            die(dump($json_array));
