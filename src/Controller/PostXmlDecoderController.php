@@ -23,12 +23,41 @@ class PostXmlDecoderController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted()) {
-            //$name = $request->request->get('name');
-            return $this->render('post_xml_decoder/index.html.twig', array(
-                //'controller_name' => 'PostXmlDecoderController',
-                'form' => $form->createView(),
-                'name' => $request->request->get('form'),
-            ));
+            $form_xml_array = $request->request->get('form');
+            $json_array = json_decode($form_xml_array['name']);
+            dump($json_array);
+        foreach($json_array as $name => $item)
+        {
+            echo $name ."</br>";
+            //die(dump($item));
+            //dump($item['DTSTITUL_O']);
+            //print_r($item['DTSVIKUP_O']);
+            foreach($item as $key => $item_1)
+            {
+                if(is_array($item))
+                {
+                    foreach($item_1 as $item_2)
+                    {
+                        echo $name . '--------------------------' . $item_2 ."</br>";
+                    }
+                }
+                else
+                {
+                     echo $name . '-------------' . $key . '-----------' . $item_1 ."</br>";
+                }
+
+
+            }
+        }
+
+
+//            die(dump($json_array));
+//            return $this->render('post_xml_decoder/index.html.twig',
+//                array(
+//                //'controller_name' => 'PostXmlDecoderController',
+//                'form' => $form->createView(),
+//                'name' => $form_xml_array['name'],
+//            ));
         }
 
 
@@ -39,4 +68,53 @@ class PostXmlDecoderController extends AbstractController
             //'name' => $name,
         ));
     }
+
+    protected function recArray($ar, $searchfor) {
+        static $result = array();
+
+        foreach($ar as $k => $v) {
+            if ($k == $searchfor) $result[] = $v;
+            if (is_array($ar[$k]))  recarray($v, $searchfor);
+        }
+        return $result;
+    }
+
+
+    protected function makeXml($form_xml_array)
+    {
+
+        $json_array = json_decode($form_xml_array['name']);
+
+
+
+
+        //Создает XML-строку и XML-документ при помощи DOM
+        $dom = new DomDocument('1.0');
+
+        //добавление корня - <books>
+        $books = $dom->appendChild($dom->createElement('books'));
+
+        //добавление элемента <book> в <books>
+        $book = $books->appendChild($dom->createElement('book'));
+
+        // добавление элемента <title> в <book>
+        $title = $book->appendChild($dom->createElement('title'));
+
+        // добавление элемента текстового узла <title> в <title>
+        $title->appendChild(
+        $dom->createTextNode('Great American Novel'));
+
+        //генерация xml
+        $dom->formatOutput = true; // установка атрибута formatOutput
+                // domDocument в значение true
+        // save XML as string or file
+        $test1 = $dom->saveXML(); // передача строки в test1
+        $dom->save('test1.xml'); // сохранение файла
+
+
+
+    }
+
+
+
 }

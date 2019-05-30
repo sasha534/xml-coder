@@ -19,8 +19,8 @@
 
     {{ form(form) }}
 
-    {% if name.name is defined %}
-        {{ dump(name.name) }}
+    {% if name is defined %}
+        {{ dump(name) }}
     {% endif %}
 </div>
 {% endblock %}
