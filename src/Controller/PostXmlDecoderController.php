@@ -37,39 +37,43 @@ class PostXmlDecoderController extends AbstractController
         $dtstitul_o = $root->appendChild($dom->createElement('z:DTSTITUL_O'));
         $row_dtstitul_o = $dtstitul_o->appendChild($dom->createElement('z:row'));
 
-
+        $dtsperson_o = $root->appendChild($dom->createElement('z:DTSPERSON_O'));
 
             foreach($json_array as $name => $item)
                 {
-                    echo $name ."</br>";
-
+                    //echo $name ."</br>";
+                    $root_str = '';
+                    if($name == 'root' and (!is_array($item)))
+                        {
+                            var_dump($item);
+                            foreach($item as $root_key => $root_atr)
+                            {
+                                //echo $root_key.'---------'.$root_atr."</br>";
+                                $row_dtstitul_o ->setAttribute($root_key,$root_atr);
+                            }
+                        }
 
                         foreach($item as $key => $item_1)
                         {
-
                             if(is_array($item))
                             {
-                                $dtsperson_o = $root->appendChild($dom->createElement('z:'.$name));
                                 $row_dtsperson_o = $dtsperson_o->appendChild($dom->createElement('z:row'));
                                 foreach($item_1 as $key_2 => $item_2)
                                 {
-                                    echo $name . '---'.$key_2."=".$item_2."</br>";
-
-
+                                    //echo $name . '---'.$key_2."=".$item_2."</br>";
                                     $row_dtsperson_o->setAttribute($key_2,$item_2);
-
 
                                 }
                             }
-                            else
-                            {
-                                 echo $name . '-------------' . $key . '-----------' . $item_1 ."</br>";
-                            }
+//                            else
+//                            {
+//                                 //echo $name . '-------------' . $key . '-----------' . $item_1 ."</br>";
+//                            }
 
 
                         }
                 }
-
+            dump($root_str);
             //генерация xml
             $dom->formatOutput = true; // установка атрибута formatOutput
             // domDocument в значение true
@@ -94,16 +98,6 @@ class PostXmlDecoderController extends AbstractController
             'form' => $form->createView(),
             //'name' => $name,
         ));
-    }
-
-    protected function recArray($ar, $searchfor) {
-        static $result = array();
-
-        foreach($ar as $k => $v) {
-            if ($k == $searchfor) $result[] = $v;
-            if (is_array($ar[$k]))  recarray($v, $searchfor);
-        }
-        return $result;
     }
 
 }
