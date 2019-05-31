@@ -42,10 +42,9 @@ class PostXmlDecoderController extends AbstractController
             foreach($json_array as $name => $item)
                 {
                     //echo $name ."</br>";
-                    $root_str = '';
                     if($name == 'root' and (!is_array($item)))
                         {
-                            var_dump($item);
+                            //var_dump($item);
                             foreach($item as $root_key => $root_atr)
                             {
                                 //echo $root_key.'---------'.$root_atr."</br>";
@@ -73,7 +72,6 @@ class PostXmlDecoderController extends AbstractController
 
                         }
                 }
-            dump($root_str);
             //генерация xml
             $dom->formatOutput = true; // установка атрибута formatOutput
             // domDocument в значение true
