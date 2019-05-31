@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<z:root>
+  <z:DTSTITUL_O>
+    <z:row D_EDRPOU="Ідентифікаційний код" D_NAME="Ідентифікаційний name" REGDATE="2019-05-26" REGNUM="Вихідний реєстраційний номер" STD="2019-05-26" FID="2019-05-26" NREG="True" TTYPE="010"/>
+  </z:DTSTITUL_O>
+  <z:DTSPERSON_O>
+    <z:row NZP="1" VYD_CP="Акція проста" KILK_CP="10" SUM_CP="2" CH_STKAP="10.33" ZMIST="MANY MANY MANY MANY BIIIIIIG BIIIIIIG OLOLO TEXT"/>
+    <z:row NZP="2" VYD_CP="Акція проста" KILK_CP="10" SUM_CP="2" CH_STKAP="10.33" ZMIST="MANY MANY MANY MANY BIIIIIIG BIIIIIIG OLOLO TEXT"/>
+  </z:DTSPERSON_O>
+</z:root>
