@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PostApiXmiDecoderController extends AbstractController
+class PostApiXmlDecoderController extends AbstractController
 {
     /**
-     * @Route("/post-api-xml-decoder", name="post_api_xmi_decoder")
+     * @Route("/post-api-xml-decoder", name="post_api_xmi_decoder", methods={"POST"})
      *
      */
     public function index(Request $request) {

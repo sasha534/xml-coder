@@ -22,5 +22,8 @@
     {% if name is defined %}
         {{ dump(name) }}
     {% endif %}
+    {% if json_array is defined %}
+        {{ dump(json_array) }}
+    {% endif %}
 </div>
 {% endblock %}
