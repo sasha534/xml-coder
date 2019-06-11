@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class PostXmlDecoderController extends AbstractController
+class FormXmlDecoderController extends AbstractController
 {
     /**
-     * @Route("/post-xml-decoder", name="post_xml_decoder")
+     * @Route("/form-xml-decoder", name="post_xml_decoder")
      */
     public function contactAction(Request $request) {
         $form = $this->createFormBuilder()
@@ -26,10 +26,10 @@ class PostXmlDecoderController extends AbstractController
         {
             $form_xml_array = $request->request->get('form');
             $json_array = json_decode($form_xml_array['name']);
-            //dump($json_array);
+            //dump($json_array);die();
 
         //Создает XML-строку и XML-документ при помощи DOM
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new \DOMDocument('1.0', 'utf-8');
 
         //добавление корня - <books>
         $root = $dom->appendChild($dom->createElement('z:root'));

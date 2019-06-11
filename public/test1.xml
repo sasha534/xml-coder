@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <z:root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:z="http://nssmc.gov.ua/Schem/IrregEm" xsi:schemaLocation="http://nssmc.gov.ua/Schem/IrregEm IrregEm.xsd" D_EDRPOU="Ідентифікаційний код" D_NAME="Ідентифікаційний name" REGDATE="2019-05-26" REGNUM="Вихідний реєстраційний номер" STD="2019-05-26" FID="2019-05-26" NREG="True" TTYPE="010">
   <z:DTSTITUL_O>
     <z:row DAT_PODP="2019-05-18" POS_PODP="Посада керівника емітента" FIO_PODP="Ф.И.О" E_NAME="full name" E_OPF="815" E_OBL="05000" E_POST="52207" E_ADRES="Улица Аллах акбар 6" E_STREET="Улица 7" E_PHONE="666-666-666-666" E_FAX="ФАКS" E_MAIL="username@mail.gg" ARM_NAME="Найменування, особи" ARM_EDRPOU="100101" ARM_CONT="031" ARM_LICNUM="Number SLUG" ADR_WWW="Адрес" DAT_WWW="2019-01-01"/>

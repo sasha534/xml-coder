@@ -26,32 +26,30 @@ class PostJsonDecoderController extends AbstractController
 
         if($form->isSubmitted())
         {
-
-//            $file = $product->getBrochure();
-//            $fileName = $fileUploader->upload($file);
-//
-//            $product->setBrochure($fileName);
-
             $form_xml_array = $request->request->get('form');
-            $xml_array = $form_xml_array['name'];
+            $xml_array = trim($form_xml_array['name']);
             //$xml_way = './public/test1.xml';
             $xml = \simplexml_load_string($xml_array);
+
+
+
+            //$xml = \simplexml_load_string($xml_way);
+            //$xml_way = './test1.xml';
+            //$xml = \simplexml_load_string($xml_way);
             //echo $movies->movie[0]->plot;
             //echo $xml->children();
             //dump($xml);
+            print_r($xml_array);
 
-//            foreach ($xml->children() as $xml_string)
+//            foreach ($xml as $xml_string)
 //            {
-//                dump($xml_string);
+//                echo json_encode($xml_string);
 //            }
 
 
+            //$json = json_decode( json_encode( $sxml ) );
 
-
-
-
-            print_r($xml);
-            //var_dump($form_xml_array);
+            echo json_decode(json_encode($xml, JSON_UNESCAPED_UNICODE));
 
             return $this->render('post_json_decoder/index.html.twig', [
                 'controller_name' => 'PostJsonDecoderController',

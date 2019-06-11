@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PostJsonDecoderController!{% endblock %}
+{% block title %}Hello FormJsonController!{% endblock %}
 
 {% block body %}
 <style>
@@ -13,8 +13,8 @@
 
     This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ 'D:/OSPanel/domains/xml-coder/src/Controller/PostJsonDecoderController.php'|file_link(0) }}">src/Controller/PostJsonDecoderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/OSPanel/domains/xml-coder/templates/post_json_decoder/index.html.twig'|file_link(0) }}">templates/post_json_decoder/index.html.twig</a></code></li>
+        <li>Your controller at <code><a href="{{ 'D:/OSPanel/domains/xml-coder-gitlab/src/Controller/FormJsonController.php'|file_link(0) }}">src/Controller/FormJsonController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'D:/OSPanel/domains/xml-coder-gitlab/templates/form_json/index.html.twig'|file_link(0) }}">templates/form_json/index.html.twig</a></code></li>
     </ul>
 
     {{ form(form) }}
@@ -25,5 +25,6 @@
     {% if json_array is defined %}
         {{ dump(json_array) }}
     {% endif %}
+
 </div>
 {% endblock %}
